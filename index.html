@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CafeXico | Café Premium Mexicano</title>
+
+    <meta name="description"
+          content="CafeXico - Café premium mexicano seleccionado desde el origen hasta tu taza.">
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+            --cafe-oscuro: #2b1a12;
+            --cafe-profundo: #3b2418;
+            --cafe-medio: #6f4328;
+            --cafe-claro: #a66a3f;
+            --beige: #f5ead8;
+            --beige-claro: #fbf7f0;
+            --dorado: #c69c55;
+            --verde: #536b43;
+            --blanco: #ffffff;
+            --texto: #33251d;
+            --gris: #6f6862;
+            --sombra: 0 15px 40px rgba(43, 26, 18, 0.12);
+        }
+
+
+        /* =========================================================
+           CONFIGURACIÓN GENERAL
+        ========================================================= */
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--texto);
+            background-color: var(--beige-claro);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            color: var(--cafe-oscuro);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: var(--gris);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .text-gold {
+            color: var(--dorado);
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .navbar {
+            background: rgba(43, 26, 18, 0.97);
+            backdrop-filter: blur(12px);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--blanco) !important;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand span {
+            color: var(--dorado);
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 20px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--dorado) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--dorado);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        #inicio {
+            min-height: 100vh;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(25, 14, 9, 0.92) 0%,
+                    rgba(25, 14, 9, 0.72) 45%,
+                    rgba(25, 14, 9, 0.25) 100%
+                ),
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2000&q=85")
+                center center / cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            color: var(--blanco);
+            padding-top: 80px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-label::before {
+            content: "";
+            display: block;
+            width: 35px;
+            height: 2px;
+            background: var(--dorado);
+        }
+
+        .hero-title {
+            font-size: clamp(3.2rem, 7vw, 6.5rem);
+            line-height: 0.98;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .hero-title span {
+            color: var(--dorado);
+        }
+
+        .hero-description {
+            max-width: 600px;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .btn-cafe {
+            background: var(--dorado);
+            border: 2px solid var(--dorado);
+            color: var(--cafe-oscuro);
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cafe:hover {
+            background: transparent;
+            color: var(--blanco);
+            border-color: var(--dorado);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-cafe {
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            color: var(--blanco);
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-cafe:hover {
+            background: var(--blanco);
+            color: var(--cafe-oscuro);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-scroll i {
+            display: block;
+            font-size: 1.3rem;
+            margin-top: 5px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+
+        /* =========================================================
+           PRODUCTOS
+        ========================================================= */
+
+        #productos {
+            background: var(--beige-claro);
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 18px;
+            overflow: hidden;
+            background: var(--blanco);
+            box-shadow: var(--sombra);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 55px rgba(43, 26, 18, 0.18);
+        }
+
+        .product-image-container {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.08);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: var(--dorado);
+            color: var(--cafe-oscuro);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .product-body {
+            padding: 28px;
+        }
+
+        .product-body h3 {
+            font-size: 1.6rem;
+            color: var(--cafe-oscuro);
+        }
+
+        .product-description {
+            color: var(--gris);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            min-height: 75px;
+        }
+
+        .product-price {
+            color: var(--cafe-medio);
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .product-origin {
+            color: var(--verde);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn-product {
+            width: 100%;
+            border: 1px solid var(--cafe-medio);
+            color: var(--cafe-medio);
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-product:hover {
+            background: var(--cafe-medio);
+            color: var(--blanco);
+        }
+
+
+        /* =========================================================
+           NOSOTROS
+        ========================================================= */
+
+        #nosotros {
+            background: var(--blanco);
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            padding-right: 30px;
+            padding-bottom: 30px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--sombra);
+        }
+
+        .about-decoration {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 180px;
+            height: 180px;
+            background: var(--dorado);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-content {
+            padding-left: 30px;
+        }
+
+        .about-content .section-title {
+            margin-bottom: 25px;
+        }
+
+        .about-content p {
+            color: var(--gris);
+            line-height: 1.9;
+        }
+
+        .about-feature {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .about-feature-icon {
+            min-width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cafe-medio);
+            font-size: 1.2rem;
+        }
+
+        .about-feature h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .about-feature p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+
+        /* =========================================================
+           CONTACTO
+        ========================================================= */
+
+        #contacto {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(59, 36, 24, 0.98),
+                    rgba(43, 26, 18, 0.98)
+                );
+            color: var(--blanco);
+        }
+
+        #contacto .section-title {
+            color: var(--blanco);
+        }
+
+        #contacto .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            min-width: 45px;
+            height: 45px;
+            background: rgba(198, 156, 85, 0.15);
+            border: 1px solid rgba(198, 156, 85, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dorado);
+        }
+
+        .contact-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.85rem;
+        }
+
+        .contact-form {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form .form-label {
+            color: var(--cafe-oscuro);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .contact-form .form-control {
+            border: 1px solid #ddd4ca;
+            border-radius: 10px;
+            padding: 13px 15px;
+            color: var(--texto);
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--dorado);
+            box-shadow: 0 0 0 0.2rem rgba(198, 156, 85, 0.15);
+        }
+
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--cafe-medio);
+            color: var(--blanco);
+            border: 2px solid var(--cafe-medio);
+            padding: 13px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--cafe-oscuro);
+            border-color: var(--cafe-oscuro);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #1c100b;
+            color: rgba(255, 255, 255, 0.65);
+            padding: 35px 0;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--blanco);
+            font-weight: 700;
+        }
+
+        .footer-brand span {
+            color: var(--dorado);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--dorado);
+            color: var(--cafe-oscuro);
+            border-color: var(--dorado);
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================================
+           ANIMACIONES
+        ========================================================= */
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 991px) {
+
+            .navbar-nav {
+                background: var(--cafe-oscuro);
+                padding: 15px;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+
+            .navbar-nav .nav-link {
+                margin-left: 0;
+                padding: 10px 0;
+            }
+
+            .hero-content {
+                padding: 120px 20px 80px;
+            }
+
+            .about-content {
+                padding-left: 0;
+                margin-top: 40px;
+            }
+
+            .about-image-wrapper {
+                padding-right: 15px;
+            }
+
+            .social-links {
+                justify-content: flex-start;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            section {
+                padding: 75px 0;
+            }
+
+            #inicio {
+                min-height: 90vh;
+            }
+
+            .hero-title {
+                font-size: 3.3rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .product-image-container {
+                height: 240px;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+
+            .footer-text {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================== -->
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+
+                <a class="navbar-brand" href="#inicio">
+                    Cafe<span>Xico</span>
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCafeXico"
+                    aria-controls="navbarCafeXico"
+                    aria-expanded="false"
+                    aria-label="Abrir navegación"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCafeXico">
+
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#inicio">
+                                Inicio
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#productos">
+                                Productos
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#nosotros">
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contacto">
+                                Contacto
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section id="inicio">
+
+            <div class="container">
+
+                <div class="hero-content fade-up">
+
+                    <div class="hero-label">
+                        Café mexicano de especialidad
+                    </div>
+
+                    <h1 class="hero-title">
+                        El sabor de México
+                        <span>en cada taza.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Descubre el carácter de nuestros cafés premium,
+                        cultivados con pasión en las montañas de México y
+                        seleccionados cuidadosamente para ofrecerte una
+                        experiencia extraordinaria.
+                    </p>
+
+                    <div class="hero-buttons d-flex gap-3">
+
+                        <a href="#productos" class="btn btn-cafe">
+                            Descubrir cafés
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+
+                        <a href="#nosotros" class="btn btn-outline-cafe">
+                            Nuestra historia
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="hero-scroll">
+                Explora
+                <i class="bi bi-chevron-down"></i>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PRODUCTOS
+        ====================================================== -->
+
+        <section id="productos">
+
+            <div class="container">
+
+                <div class="text-center mb-5 fade-up">
+
+                    <div class="hero-label justify-content-center">
+                        Nuestra selección
+                    </div>
+
+                    <h2 class="section-title">
+                        Cafés que cuentan una historia
+                    </h2>
+
+                    <p class="section-subtitle mt-3">
+                        Granos cuidadosamente seleccionados de diferentes
+                        regiones cafetaleras de México para ofrecer perfiles
+                        únicos y memorables.
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <!-- Producto 1 -->
+                    <div class="col-md-6 col-lg-4 fade-up">
+
+                        <article class="card product-card">
+
+                            <div class="product-image-container">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=900&q=80"
+                                    class="product-image"
+                                    alt="Granos de café tostado"
+                                    loading="lazy"
+                                >
+
+                                <span class="product-badge">
+                                    Más vendido
+                                </span>
+
+                            </div>
+
+                            <div class="product-body">
+
+                                <span class="product-origin">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    Chiapas, México
+                                </span>
+
+                                <h3 class="mt-2">
+                                    Café Chiapas
+                                </h3>
+
+                                <p class="product-description">
+                                    Un café equilibrado con notas de chocolate
+                                    oscuro, nuez y un delicado toque de caramelo.
+                                </p>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                    <span class="product-price">
+                                        $289 MXN
+                                    </span>
+
+                                    <span class="text-muted small">
+                                        500 g
+                                    </span>
+
+                                </div>
+
+                                <button
+                                    class="btn btn-product"
+                                    onclick="seleccionarProducto('Café Chiapas')"
+                                >
+                                    <i class="bi bi-cup-hot me-2"></i>
+                                    Seleccionar
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- Producto 2 -->
+                    <div class="col-md-6 col-lg-4 fade-up">
+
+                        <article class="card product-card">
+
+                            <div class="product-image-container">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=80"
+                                    class="product-image"
+                                    alt="Taza de café premium"
+                                    loading="lazy"
+                                >
+
+                                <span class="product-badge">
+                                    Especialidad
+                                </span>
+
+                            </div>
+
+                            <div class="product-body">
+
+                                <span class="product-origin">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    Veracruz, México
+                                </span>
+
+                                <h3 class="mt-2">
+                                    Café Veracruz
+                                </h3>
+
+                                <p class="product-description">
+                                    Perfil aromático y elegante con notas
+                                    cítricas, florales y un final ligeramente
+                                    dulce.
+                                </p>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                    <span class="product-price">
+                                        $319 MXN
+                                    </span>
+
+                                    <span class="text-muted small">
+                                        500 g
+                                    </span>
+
+                                </div>
+
+                                <button
+                                    class="btn btn-product"
+                                    onclick="seleccionarProducto('Café Veracruz')"
+                                >
+                                    <i class="bi bi-cup-hot me-2"></i>
+                                    Seleccionar
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- Producto 3 -->
+                    <div class="col-md-6 col-lg-4 fade-up">
+
+                        <article class="card product-card">
+
+                            <div class="product-image-container">
+
+                                <img
+                                    src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=900&q=80"
+                                    class="product-image"
+                                    alt="Café preparado en taza"
+                                    loading="lazy"
+                                >
+
+                                <span class="product-badge">
+                                    Premium
+                                </span>
+
+                            </div>
+
+                            <div class="product-body">
+
+                                <span class="product-origin">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    Oaxaca, México
+                                </span>
+
+                                <h3 class="mt-2">
+                                    Café Oaxaca
+                                </h3>
+
+                                <p class="product-description">
+                                    Intenso y complejo, con notas de cacao,
+                                    frutos rojos y especias dulces.
+                                </p>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                    <span class="product-price">
+                                        $349 MXN
+                                    </span>
+
+                                    <span class="text-muted small">
+                                        500 g
+                                    </span>
+
+                                </div>
+
+                                <button
+                                    class="btn btn-product"
+                                    onclick="seleccionarProducto('Café Oaxaca')"
+                                >
+                                    <i class="bi bi-cup-hot me-2"></i>
+                                    Seleccionar
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             NOSOTROS
+        ====================================================== -->
+
+        <section id="nosotros">
+
+            <div class="container">
+
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-6 fade-up">
+
+                        <div class="about-image-wrapper">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=85"
+                                class="about-image"
+                                alt="Cafetería CafeXico"
+                                loading="lazy"
+                            >
+
+                            <div class="about-decoration"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-6 fade-up">
+
+                        <div class="about-content">
+
+                            <div class="hero-label">
+                                Nuestra historia
+                            </div>
+
+                            <h2 class="section-title">
+                                Del campo mexicano
+                                <span class="text-gold">a tu taza.</span>
+                            </h2>
+
+                            <p>
+                                CafeXico nació de una idea sencilla:
+                                compartir con el mundo la extraordinaria
+                                calidad del café mexicano.
+                            </p>
+
+                            <p>
+                                Trabajamos de cerca con productores locales
+                                para seleccionar granos provenientes de
+                                regiones reconocidas por sus condiciones
+                                ideales para el cultivo del café.
+                            </p>
+
+                            <p>
+                                Nuestro compromiso va más allá del sabor.
+                                Buscamos construir relaciones duraderas con
+                                nuestros productores y promover una cultura
+                                de consumo responsable y consciente.
+                            </p>
+
+
+                            <div class="about-feature">
+
+                                <div class="about-feature-icon">
+                                    <i class="bi bi-tree"></i>
+                                </div>
+
+                                <div>
+                                    <h4>
+                                        Directamente del origen
+                                    </h4>
+
+                                    <p>
+                                        Seleccionamos café de regiones
+                                        productoras mexicanas.
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="about-feature">
+
+                                <div class="about-feature-icon">
+                                    <i class="bi bi-heart"></i>
+                                </div>
+
+                                <div>
+                                    <h4>
+                                        Hecho con pasión
+                                    </h4>
+
+                                    <p>
+                                        Cada grano es seleccionado y tostado
+                                        cuidadosamente.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTACTO
+        ====================================================== -->
+
+        <section id="contacto">
+
+            <div class="container">
+
+                <div class="row g-5 align-items-start">
+
+                    <div class="col-lg-5 fade-up">
+
+                        <div class="hero-label">
+                            Ponte en contacto
+                        </div>
+
+                        <h2 class="section-title">
+                            Hablemos de café.
+                        </h2>
+
+                        <p class="section-subtitle text-start mt-3">
+                            ¿Tienes alguna pregunta sobre nuestros productos?
+                            Escríbenos y nuestro equipo estará encantado de
+                            atenderte.
+                        </p>
+
+
+                        <div class="contact-info">
+
+                            <div class="contact-item">
+
+                                <div class="contact-icon">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+
+                                <div>
+                                    <h4>
+                                        Dirección
+                                    </h4>
+
+                                    <p>
+                                        Av. Café Mexicano #125,
+                                        Ciudad de México
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="contact-item">
+
+                                <div class="contact-icon">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+
+                                <div>
+                                    <h4>
+                                        Correo electrónico
+                                    </h4>
+
+                                    <p>
+                                        hola@cafexico.mx
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="contact-item">
+
+                                <div class="contact-icon">
+                                    <i class="bi bi-telephone"></i>
+                                </div>
+
+                                <div>
+                                    <h4>
+                                        Teléfono
+                                    </h4>
+
+                                    <p>
+                                        +52 55 1234 5678
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="contact-item">
+
+                                <div class="contact-icon">
+                                    <i class="bi bi-clock"></i>
+                                </div>
+
+                                <div>
+                                    <h4>
+                                        Horario
+                                    </h4>
+
+                                    <p>
+                                        Lunes - Sábado | 8:00 - 20:00
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-7 fade-up">
+
+                        <form
+                            id="contactForm"
+                            class="contact-form"
+                            novalidate
+                        >
+
+                            <div class="row g-3">
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        for="nombre"
+                                        class="form-label"
+                                    >
+                                        Nombre
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="nombre"
+                                        name="nombre"
+                                        placeholder="Tu nombre"
+                                        required
+                                        minlength="3"
+                                    >
+
+                                    <div class="invalid-feedback">
+                                        Introduce tu nombre.
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label
+                                        for="correo"
+                                        class="form-label"
+                                    >
+                                        Correo electrónico
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="correo"
+                                        name="correo"
+                                        placeholder="correo@ejemplo.com"
+                                        required
+                                    >
+
+                                    <div class="invalid-feedback">
+                                        Introduce un correo electrónico válido.
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <label
+                                        for="mensaje"
+                                        class="form-label"
+                                    >
+                                        Mensaje
+                                    </label>
+
+                                    <textarea
+                                        class="form-control"
+                                        id="mensaje"
+                                        name="mensaje"
+                                        placeholder="¿En qué podemos ayudarte?"
+                                        required
+                                        minlength="10"
+                                    ></textarea>
+
+                                    <div class="invalid-feedback">
+                                        El mensaje debe tener al menos 10
+                                        caracteres.
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-submit"
+                                    >
+                                        Enviar mensaje
+                                        <i class="bi bi-send ms-2"></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <div
+                                id="formMessage"
+                                class="alert mt-4 d-none"
+                                role="alert"
+                            ></div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-6 footer-text">
+
+                    <div class="footer-brand">
+                        Cafe<span>Xico</span>
+                    </div>
+
+                    <p class="small mb-0 mt-2">
+                        Café mexicano. Pasión en cada taza.
+                    </p>
+
+                    <p class="small mb-0 mt-2">
+                        © <span id="currentYear"></span> CafeXico.
+                        Todos los derechos reservados.
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="social-links">
+
+                        <a
+                            href="https://www.facebook.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social-link"
+                            aria-label="Facebook"
+                        >
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a
+                            href="https://www.instagram.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social-link"
+                            aria-label="Instagram"
+                        >
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a
+                            href="https://www.tiktok.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social-link"
+                            aria-label="TikTok"
+                        >
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+
+                        <a
+                            href="https://www.youtube.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="social-link"
+                            aria-label="YouTube"
+                        >
+                            <i class="bi bi-youtube"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         BOOTSTRAP JAVASCRIPT
+    ========================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- =========================================================
+         JAVASCRIPT PERSONALIZADO
+    ========================================================== -->
+
+    <script>
+
+        /* =====================================================
+           AÑO AUTOMÁTICO DEL FOOTER
+        ====================================================== */
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+
+        /* =====================================================
+           ANIMACIÓN AL HACER SCROLL
+        ====================================================== */
+
+        const animatedElements =
+            document.querySelectorAll(".fade-up");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+
+        animatedElements.forEach((element) => {
+            observer.observe(element);
+        });
+
+
+        /* =====================================================
+           CERRAR NAVBAR MÓVIL AL SELECCIONAR UN ENLACE
+        ====================================================== */
+
+        const navLinks =
+            document.querySelectorAll(".navbar-nav .nav-link");
+
+        const navbarCollapse =
+            document.getElementById("navbarCafeXico");
+
+        navLinks.forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                if (navbarCollapse.classList.contains("show")) {
+
+                    const bsCollapse =
+                        bootstrap.Collapse.getInstance(navbarCollapse);
+
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    }
+
+                }
+
+            });
+
+        });
+
+
+        /* =====================================================
+           SELECCIÓN DE PRODUCTO
+        ====================================================== */
+
+        function seleccionarProducto(producto) {
+
+            const mensaje =
+                `Hola, estoy interesado en adquirir ${producto}.`;
+
+            document.getElementById("mensaje").value = mensaje;
+
+            document
+                .getElementById("contacto")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            setTimeout(() => {
+                document.getElementById("nombre").focus();
+            }, 700);
+
+        }
+
+
+        /* =====================================================
+           VALIDACIÓN DEL FORMULARIO
+        ====================================================== */
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const formMessage =
+            document.getElementById("formMessage");
+
+
+        contactForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            if (!contactForm.checkValidity()) {
+
+                contactForm.classList.add("was-validated");
+
+                formMessage.classList.add("d-none");
+
+                return;
+            }
+
+
+            const nombre =
+                document.getElementById("nombre").value.trim();
+
+            formMessage.className =
+                "alert alert-success mt-4";
+
+            formMessage.innerHTML = `
+                <i class="bi bi-check-circle-fill me-2"></i>
+                Gracias, <strong>${escapeHTML(nombre)}</strong>.
+                Tu mensaje ha sido recibido correctamente.
+                Nos pondremos en contacto contigo próximamente.
+            `;
+
+
+            contactForm.reset();
+
+            contactForm.classList.remove("was-validated");
+
+        });
+
+
+        /* =====================================================
+           PROTECCIÓN BÁSICA PARA MOSTRAR EL NOMBRE
+        ====================================================== */
+
+        function escapeHTML(text) {
+
+            const div = document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =====================================================
+           EFECTO DE NAVBAR AL HACER SCROLL
+        ====================================================== */
+
+        const navbar =
+            document.querySelector(".navbar");
+
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 80) {
+
+                navbar.style.padding = "10px 0";
+                navbar.style.boxShadow =
+                    "0 5px 25px rgba(0,0,0,0.25)";
+
+            } else {
+
+                navbar.style.padding = "15px 0";
+                navbar.style.boxShadow = "none";
+
+            }
+
+        });
+
+
+        /* =====================================================
+           INICIO DE ANIMACIONES DEL HERO
+        ====================================================== */
+
+        window.addEventListener("load", () => {
+
+            const hero =
+                document.querySelector("#inicio .fade-up");
+
+            if (hero) {
+                setTimeout(() => {
+                    hero.classList.add("visible");
+                }, 200);
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
